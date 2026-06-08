@@ -1,0 +1,66 @@
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+<form  id="myForm"  name="myForm"  >
+<h1>简易购物车</h1>
+<table border="1" width="100%">
+<tr  style="background-color:lightblue">
+	<th>编号</th>
+	<th>名称</th>
+	<th>单价（元）</th>
+	<th>数量</th>
+	<th>总价</th>
+</tr>
+<tr>
+	<td>A01</td>
+	<td>零食</td>
+	<td><input type="text">元</td>
+	<td><input type="text">个</td>
+	<td><input type="text">元</td>
+</tr>
+<tr>
+	<td>A02</td>
+	<td>玩具</td>
+	<td><input type="text">元</td>
+	<td><input type="text">个</td>
+	<td><input type="text">元</td>
+</tr>
+<tr>
+	<td>A03</td>
+	<td>日用品</td>
+	<td><input type="text">元</td>
+	<td><input type="text">个</td>
+	<td><input type="text">元</td>
+</tr>
+<tr>
+	<td colspan="5" style="text-align:center">共<input type="text"  style="width:100px">元</td>
+</tr>
+<tr>
+	<td colspan="5" style="text-align:center"><input type="button"  style="width:100px" value="计算金额"></td>
+</tr>
+<tr>
+	<td colspan="5" style="text-align:center">
+	请选择地址：<select id="address" style="width:100px"><option value="0" >-<select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	请选择配送方式：<select id="psType"  style="width:100px"><option value="0" >-<select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	请输入电话号码：<input type="text"  style="width:150px">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	是否有会员：<input type="radio" id="no" name="member">否<input type="radio" id="Yes" name="member">是
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	请输入会员号码：<input type="text"  style="width:150px">
+	</td>
+</tr>
+<tr>
+	<td  colspan="5" style="text-align:center"><input type="button" value="提交"  style="width:70px" ></td>
+</tr>
+</form>
+
+</body>
+
+<style>
+</style>
+</html>
