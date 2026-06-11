@@ -63,7 +63,8 @@
 	</td>
 </tr>
 <tr>
-	<td  colspan="5" style="text-align:center"><input type="button" value="提交"  style="width:70px"  onclick="submitButton()" ></td>
+	<td  colspan="5" style="text-align:center"><input type="button" value="提交"  style="width:70px"  onclick="submitButton()" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="button" value="访问谷歌"  style="width:120px"  onclick="googleButton()" ></td>
 </tr>
 </table>
 </form>
@@ -165,6 +166,10 @@ function  submitButton(){
 	else{
 		document.getElementById("myForm").submit();
 	}
+}
+//-------------------------------------------------------------------------------------------------
+function googleButton(){
+	location.href="https://www.google.com";
 }
 </script>
 </html>
