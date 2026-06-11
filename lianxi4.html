@@ -17,23 +17,23 @@
 <tr>
 	<td>A01</td>
 	<td>零食</td>
-	<td><input type="text"  value="5"  id="price01">元</td>
-	<td><input type="text"  value=""  id="count01">个</td>
-	<td><input type="text"  value=""  id="xiaoji01">元</td>
+	<td><input type="text"  value="5"  id="price01"  name="price">元</td>
+	<td><input type="text"  value=""  id="count01"  name="count">个</td>
+	<td><input type="text"  value=""  id="xiaoji01"  name="xiaoji">元</td>
 </tr>
 <tr>
 	<td>A02</td>
 	<td>玩具</td>
-	<td><input type="text"  value="10"  id="price02">元</td>
-	<td><input type="text"  value=""   id="count02">个</td>
-	<td><input type="text"  value=""  id="xiaoji02">元</td>
+	<td><input type="text"  value="10"  id="price02"  name="price">元</td>
+	<td><input type="text"  value=""   id="count02"  name="count">个</td>
+	<td><input type="text"  value=""  id="xiaoji02"  name="xiaoji">元</td>
 </tr>
 <tr>
 	<td>A03</td>
 	<td>日用品</td>
-	<td><input type="text"  value="20"  id="price03">元</td>
-	<td><input type="text"  value=""   id="count03">个</td>
-	<td><input type="text"  value=""  id="xiaoji03">元</td>
+	<td><input type="text"  value="20"  id="price03"  name="price">元</td>
+	<td><input type="text"  value=""   id="count03"  name="count">个</td>
+	<td><input type="text"  value=""  id="xiaoji03"  name="xiaoji">元</td>
 </tr>
 <tr>
 	<td colspan="5" style="text-align:center">共<input type="text"  style="width:100px" id="sum"  value="">元</td>
@@ -74,41 +74,35 @@
 <script>
 function JiSuan(){
 //----------------------------------定义--------------------------------
-	let  price01= document.getElementById("price01");
-	let  price02= document.getElementById("price02");
-	let  price03= document.getElementById("price03");
-	let  count01= document.getElementById("count01");
-	let  count02= document.getElementById("count02");
-	let  count03= document.getElementById("count03");
-	let  xiaoji01= document.getElementById("xiaoji01");
-	let  xiaoji02= document.getElementById("xiaoji02");
-	let  xiaoji03= document.getElementById("xiaoji03");
+	let  price= document.getElementsByName("price");
+	let  count= document.getElementsByName("count");
+	let  xiaoji= document.getElementsByName("xiaoji");
 	let  sum= document.getElementById("sum");
 	let  jiSuan= document.getElementById("jiSuan");
 
 //--------------------------------function2------------------------------------------
-	if(count01.value==""){
-		xiaoji01.value = 0;
+	if(count[0].value==""){
+		xiaoji[0].value = 0;
 	}
-	if(count02.value==""){
-		xiaoji02.value = 0;
+	if(count[1].value==""){
+		xiaoji[1].value = 0;
 	}
-	if(count03.value==""){
-		xiaoji03.value = 0;
+	if(count[2].value==""){
+		xiaoji[2].value = 0;
 	}
-	if(count01.value !=""){
-		xiaoji01.value = price01.value * count01.value;
+	if(count[0].value !=""){
+		xiaoji[0].value = price[0].value * count[0].value;
 	}
-	if(count02.value !=""){
-		xiaoji02.value = price02.value * count02.value;
+	if(count[1].value !=""){
+		xiaoji[1].value = price[1].value * count[1].value;
 	}
-	if(count03.value !=""){
-		xiaoji03.value = price03.value * count03.value;
+	if(count[2].value !=""){
+		xiaoji[2].value = price[2].value * count[2].value;
 	}
 
-	sum.value=Number(xiaoji01.value)+Number(xiaoji02.value)+Number(xiaoji03.value);
+	sum.value=Number(xiaoji[0].value)+Number(xiaoji[1].value)+Number(xiaoji[2].value);
 }
-
+//---------------------------------------------------------------------------------------------
 function  addressChange(){
 	let address= document.getElementById("address");
 	let psType= document.getElementById("psType");
@@ -139,12 +133,8 @@ function  submitButton(){
 	let telephone= document.getElementById("telephone");
 	let address= document.getElementById("address");
 	let psType= document.getElementById("psType");
-	let  count01= document.getElementById("count01");
-	let  count02= document.getElementById("count02");
-	let  count03= document.getElementById("count03");
-	let  xiaoji01= document.getElementById("xiaoji01");
-	let  xiaoji02= document.getElementById("xiaoji02");
-	let  xiaoji03= document.getElementById("xiaoji03");
+	let  count= document.getElementsByName("count");
+	let  xiaoji= document.getElementsByName("xiaoji");
 	let  sum= document.getElementById("sum");
 
 	if(telephone.value==""){
@@ -156,10 +146,10 @@ function  submitButton(){
 	else if(psType.value=="0"){
 		alert("请选择配送方式");
 	}
-	else if( (count01.value=="" || count01.value=="0") && (count02.value=="" || count02.value=="0") && (count03.value=="" || count03.value=="0")){
+	else if( (count[0].value=="" || count[0].value=="0") && (count[1].value=="" || count[1].value=="0") && (count[2].value=="" || count[2].value=="0")){
 		alert("请至少购买一件物品");
 	}
-	else if(xiaoji01.value=="" || xiaoji02.value==""|| xiaoji03.value=="" || sum.value==""){
+	else if(xiaoji[0].value=="" || xiaoji[1].value==""|| xiaoji[2].value=="" || sum.value==""){
 		alert("请计算购买金额");
 	}
 	else{
