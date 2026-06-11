@@ -4,7 +4,7 @@
 </head>
 
 <body>
-<form  id="myForm"  name="myForm"  >
+<form  id="myForm"  name="myForm"  action="https://httpbin.org/post" method="post" >
 <h1>简易购物车</h1>
 <table border="1" width="100%">
 <tr  style="background-color:lightblue">
@@ -12,55 +12,159 @@
 	<th>名称</th>
 	<th>单价（元）</th>
 	<th>数量</th>
-	<th>总价</th>
+	<th>小计</th>
 </tr>
 <tr>
 	<td>A01</td>
 	<td>零食</td>
-	<td><input type="text">元</td>
-	<td><input type="text">个</td>
-	<td><input type="text">元</td>
+	<td><input type="text"  value="5"  id="price01">元</td>
+	<td><input type="text"  value=""  id="count01">个</td>
+	<td><input type="text"  value=""  id="xiaoji01">元</td>
 </tr>
 <tr>
 	<td>A02</td>
 	<td>玩具</td>
-	<td><input type="text">元</td>
-	<td><input type="text">个</td>
-	<td><input type="text">元</td>
+	<td><input type="text"  value="10"  id="price02">元</td>
+	<td><input type="text"  value=""   id="count02">个</td>
+	<td><input type="text"  value=""  id="xiaoji02">元</td>
 </tr>
 <tr>
 	<td>A03</td>
 	<td>日用品</td>
-	<td><input type="text">元</td>
-	<td><input type="text">个</td>
-	<td><input type="text">元</td>
+	<td><input type="text"  value="20"  id="price03">元</td>
+	<td><input type="text"  value=""   id="count03">个</td>
+	<td><input type="text"  value=""  id="xiaoji03">元</td>
 </tr>
 <tr>
-	<td colspan="5" style="text-align:center">共<input type="text"  style="width:100px">元</td>
+	<td colspan="5" style="text-align:center">共<input type="text"  style="width:100px" id="sum"  value="">元</td>
 </tr>
 <tr>
-	<td colspan="5" style="text-align:center"><input type="button"  style="width:100px" value="计算金额"></td>
+	<td colspan="5" style="text-align:center"><input type="button"  style="width:100px" value="计算金额"    id="jiSuan"    onclick="JiSuan()"></td>
 </tr>
 <tr>
 	<td colspan="5" style="text-align:center">
-	请选择地址：<select id="address" style="width:100px"><option value="0" >-<select>
+	请选择地址：
+<select id="address" style="width:100px"  onchange="addressChange()">
+	<option value="0" >-</option>
+	<option value="1">地址一</option>
+	<option value="2" >地址二</option>
+</select>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	请选择配送方式：<select id="psType"  style="width:100px"><option value="0" >-<select>
+	请选择配送方式：
+<select id="psType"  style="width:100px">
+<option value='0'>-</option>
+</select>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	请输入电话号码：<input type="text"  style="width:150px">
+	请输入电话号码：<input type="text"  style="width:150px"  id="telephone" value="">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	是否有会员：<input type="radio" id="no" name="member">否<input type="radio" id="Yes" name="member">是
+	是否有会员：<input type="radio" id="buttonNo" name="member"  onclick="memberChange()">否<input type="radio" id="buttonYes"  name="member"  onclick="memberChange()">是
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	请输入会员号码：<input type="text"  style="width:150px">
 	</td>
 </tr>
 <tr>
-	<td  colspan="5" style="text-align:center"><input type="button" value="提交"  style="width:70px" ></td>
+	<td  colspan="5" style="text-align:center"><input type="button" value="提交"  style="width:70px"  onclick="submitButton()" ></td>
 </tr>
+</table>
 </form>
-
 </body>
 
-<style>
-</style>
+
+
+<script>
+function JiSuan(){
+//----------------------------------定义--------------------------------
+	let  price01= document.getElementById("price01");
+	let  price02= document.getElementById("price02");
+	let  price03= document.getElementById("price03");
+	let  count01= document.getElementById("count01");
+	let  count02= document.getElementById("count02");
+	let  count03= document.getElementById("count03");
+	let  xiaoji01= document.getElementById("xiaoji01");
+	let  xiaoji02= document.getElementById("xiaoji02");
+	let  xiaoji03= document.getElementById("xiaoji03");
+	let  sum= document.getElementById("sum");
+	let  jiSuan= document.getElementById("jiSuan");
+
+//--------------------------------function2------------------------------------------
+	if(count01.value==""){
+		xiaoji01.value = 0;
+	}
+	if(count02.value==""){
+		xiaoji02.value = 0;
+	}
+	if(count03.value==""){
+		xiaoji03.value = 0;
+	}
+	if(count01.value !=""){
+		xiaoji01.value = price01.value * count01.value;
+	}
+	if(count02.value !=""){
+		xiaoji02.value = price02.value * count02.value;
+	}
+	if(count03.value !=""){
+		xiaoji03.value = price03.value * count03.value;
+	}
+
+	sum.value=Number(xiaoji01.value)+Number(xiaoji02.value)+Number(xiaoji03.value);
+}
+
+function  addressChange(){
+	let address= document.getElementById("address");
+	let psType= document.getElementById("psType");
+
+	if(address.value=="0"){
+		psType.innerHTML = "<option value='0'>-</option>"
+	}else if(address.value=="1"){
+		psType.innerHTML = "<option value='1'>门前取件</option>" +
+					"<option value='2'>菜鸟驿站</option>" +
+					"<option value='3'>其他方法</option>" ;
+	}else if(address.value=="2"){
+		psType.innerHTML = "<option value='4'>小区门卫</option>" +
+					"<option value='3'>其他方法</option>" ;
+	}
+}
+//-----------------------------------------------------------------------------------------
+function  memberChange(){
+	let member= document.getElementsByName("member");
+	let telephone= document.getElementById("telephone");
+	if(member[0].checked==true){
+		telephone.disabled=true;
+	}else if(member[0].checked==false){
+		telephone.disabled=false;
+	}
+}
+//----------------------------------------------------------------------------------------------
+function  submitButton(){
+	let telephone= document.getElementById("telephone");
+	let address= document.getElementById("address");
+	let psType= document.getElementById("psType");
+	let  count01= document.getElementById("count01");
+	let  count02= document.getElementById("count02");
+	let  count03= document.getElementById("count03");
+	let  xiaoji01= document.getElementById("xiaoji01");
+	let  xiaoji02= document.getElementById("xiaoji02");
+	let  xiaoji03= document.getElementById("xiaoji03");
+	let  sum= document.getElementById("sum");
+
+	if(telephone.value==""){
+		alert("请输入电话号码");
+	}
+	else if(address.value=="0"){
+		alert("请选择地址");
+	}
+	else if(psType.value=="0"){
+		alert("请选择配送方式");
+	}
+	else if( (count01.value=="" || count01.value=="0") && (count02.value=="" || count02.value=="0") && (count03.value=="" || count03.value=="0")){
+		alert("请至少购买一件物品");
+	}
+	else if(xiaoji01.value=="" || xiaoji02.value==""|| xiaoji03.value=="" || sum.value==""){
+		alert("请计算购买金额");
+	}
+	else{
+		document.getElementById("myForm").submit();
+	}
+}
+</script>
 </html>
