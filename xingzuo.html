@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+.box {
+	width:400px;
+	border: 2px solid black;
+	padding: 20px;
+	margin:auto;
+}
+button{
+    height:50px;
+    width:100px;
+    background-color:lightblue;
+    border:2px solid black;
+    box-shadow:0 1px gray;
+}
+
+button:active{
+    transform:translateY(4px);
+    box-shadow:0 0 gray;
+}
+</style>
+</head>
+
+<body><!-- ------------------------------------------------------------------------------------------------ -->
+<div class ="box"><center>
+<h1><center><b>星座查询</b></h1>
+<div id="result"></div><hr>
+<center>请选择你的出生日期：<br><br>
+
+月份:&nbsp;&nbsp;&nbsp;
+<select id="month" style="
+height:50px;
+width:100px;	
+">
+<option value="1">一月</option><option value="2">二月</option><option value="3">三月</option><option value="4">四月</option><option value="5">五月</option><option value="6">六月</option><option value="7">七月</option><option value="8">八月</option><option value="9">九月</option><option value="10">十月</option><option value="11">十一月</option><option value="12">十二月</option>
+</select>
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+日期:&nbsp;&nbsp;&nbsp;
+<select id="day" style="
+height:50px;
+width:100px;
+">
+<option value="1">1日</option><option value="2">2日</option><option value="3">3日</option><option value="4">4日</option><option value="5">5日</option><option value="6">6日</option><option value="7">7日</option><option value="8">8日</option><option value="9">9日</option><option value="10">10日</option><option value="11">11日</option><option value="12">12日</option><option value="13">13日</option><option value="14">14日</option><option value="15">15日</option><option value="16">16日</option><option value="17">17日</option><option value="18">18日</option><option value="19">19日</option><option value="20">20日</option><option value="21">21日</option><option value="22">22日</option><option value="23">23日</option><option value="24">24日</option><option value="25">25日</option><option value="26">26日</option><option value="27">27日</option><option value="28">28日</option><option value="29">29日</option><option value="30">30日</option><option value="31">31日</option>
+</select><br><br>
+<!--  查询按钮 -->
+<button style="
+height:50px;
+width:100px;
+background-color:lightblue;
+border:2px solid black;
+"
+onclick ="chaXun()">查询
+</button>
+</div>
+<script src="xingzuo.js"></script>
+</body>
+</html>
